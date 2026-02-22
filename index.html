@@ -3,151 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suryansh | Mechanical Space</title>
+    <title>Suryansh Tanwar | HVAC Engineer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        :root {
-            --deep-space: #05070a;
-            --pastel-pink: #ffafbd;
-            --pastel-blue: #a1c4fd;
-            --pastel-purple: #c2e9fb;
-            --text-main: #ffffff;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--deep-space);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* --- 1. Cute Solid Space Elements --- */
-        .space-container {
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: radial-gradient(circle at center, #1b2735 0%, #05070a 100%);
-        }
-
-        /* Solid Pastel Planet 1 */
-        .cute-planet {
-            position: absolute;
-            border-radius: 50%;
-            box-shadow: inset -15px -15px 30px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.1);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .p-pink { width: 120px; height: 120px; background: var(--pastel-pink); top: 10%; right: 10%; }
-        .p-blue { width: 80px; height: 80px; background: var(--pastel-blue); bottom: 20%; left: 5%; animation-delay: 2s; }
-
-        /* Floating Astronaut (Solid Element) */
-        .astronaut {
-            position: absolute;
-            width: 150px;
-            top: 40%;
-            right: 15%;
-            filter: drop-shadow(0 0 20px rgba(161, 196, 253, 0.5));
-            animation: astroMove 8s infinite alternate ease-in-out;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes astroMove {
-            from { transform: translate(0, 0) rotate(-10deg); }
-            to { transform: translate(-30px, 40px) rotate(10deg); }
-        }
-
-        /* --- 2. High Visibility Content --- */
-        .main-content {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        /* Text is now SOLID and BOLD for readability */
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            background: linear-gradient(to bottom, #ffffff, #a1c4fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .sub-text {
-            font-size: 1.5rem;
-            color: #38bdf8;
-            font-weight: bold;
-            margin-top: 10px;
-            background: rgba(0,0,0,0.3);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 8px;
-        }
-
-        .glass-card {
-            background: rgba(15, 23, 42, 0.8); /* Darker background for better text contrast */
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 30px;
-            margin-top: 50px;
-            text-align: left;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: var(--pastel-pink);
-            color: #000;
-            padding: 8px 18px;
-            border-radius: 50px;
-            margin: 5px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
+        body { margin: 0; background: #05070a; color: white; font-family: sans-serif; overflow: hidden; }
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .ui-layer { position: relative; z-index: 10; height: 100vh; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+        .card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); padding: 40px; border-radius: 30px; border: 1px solid #38bdf8; text-align: center; pointer-events: auto; }
+        h1 { font-size: 3rem; margin: 0; background: linear-gradient(to bottom, #fff, #a1c4fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
 
-    <div class="space-container">
-        <div class="cute-planet p-pink"></div>
-        <div class="cute-planet p-blue"></div>
-        
-        <img src="https://cdni.iconscout.com/illustration/premium/thumb/astronaut-floating-in-space-4439006-3701389.png" class="astronaut" alt="Astronaut">
-    </div>
+    <div id="canvas-container"></div>
 
-    <div class="main-content">
-        <h1>Suryansh Tanwar</h1>
-        <div class="sub-text">Mechanical Engineer | HVAC Design</div>
-
-        <div class="glass-card">
-            <h2 style="color: var(--pastel-pink); margin-top: 0;">🚀 About My Mission</h2>
-            <p style="font-size: 1.2rem; line-height: 1.8; color: #e2e8f0;">
-                I specialize in <b>HVAC Duct Design</b> and <b>Energy Efficient Systems</b>. 
-                Just like space, engineering is about precision and balance. 
-                I bring technical accuracy to every project I touch.
-            </p>
-
-            <h2 style="color: var(--pastel-blue);">🛠️ Core Tech Stack</h2>
-            <div class="skills-container">
-                <span class="skill-tag">AutoCAD</span>
-                <span class="skill-tag">Duct Sizing</span>
-                <span class="skill-tag">Static Pressure</span>
-                <span class="skill-tag">Heat Load</span>
-                <span class="skill-tag">Excel Magic</span>
-            </div>
+    <div class="ui-layer">
+        <div class="card">
+            <h1>Suryansh Tanwar</h1>
+            <p style="color: #38bdf8; font-weight: bold;">Mechanical Engineer | HVAC Design</p>
+            <p>Calculated airflow, pressure drop, and selected fan capacity.</p>
         </div>
     </div>
 
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // --- THE SOLID 3D OBJECT ---
+        // This is a real 3D Sphere, not a flat circle
+        const geometry = new THREE.SphereGeometry(1.5, 64, 64);
+        const material = new THREE.MeshStandardMaterial({ 
+            color: 0xffafbd, // Pastel Pink from your image
+            roughness: 0.2, 
+            metalness: 0.1 
+        });
+        const planet = new THREE.Mesh(geometry, material);
+        scene.add(planet);
+
+        // --- LIGHTING (Makes it look solid) ---
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0x404040));
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            planet.rotation.y += 0.005; // Slow rotate
+            planet.position.x = Math.sin(Date.now() * 0.001) * 2; // Floating left to right
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
