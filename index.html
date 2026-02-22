@@ -76,6 +76,19 @@
 button {
     cursor: pointer;
 }
+   /* Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
     </style>
 </head>
 
@@ -87,7 +100,7 @@ button {
     <a href="#projects" class="btn">View My Work</a>
 </header>
 
-<section>
+<section class="fade-in">
     <h2>About Me</h2>
     <p>
         Mechanical Engineering graduate focused on HVAC duct design,
