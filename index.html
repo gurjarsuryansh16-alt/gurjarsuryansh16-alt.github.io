@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
     <title>Suryansh Tanwar | Mechanical Engineer</title>
     <meta charset="UTF-8">
@@ -90,10 +90,12 @@
             color: #aaa;
             font-size: 14px;
         }
-    </style>
+    </style> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>  
 </head>
 
-<body>
+<body id="vanta-bg">
 
 <header>
     <h1>Suryansh Tanwar</h1>
@@ -130,5 +132,19 @@
     © 2026 Suryansh Tanwar | Built with GitHub Pages
 </footer>
 
+<script>
+VANTA.GLOBE({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0xff6ec7,
+  backgroundColor: 0xf0f8ff
+})
+</script>    
 </body>
 </html>
