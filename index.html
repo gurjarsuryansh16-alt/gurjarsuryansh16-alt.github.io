@@ -4,162 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suryansh Tanwar | Portfolio</title>
-    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f7f9; color: #333; line-height: 1.6; }
-
-        /* Hero Section with Gradient Effect */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(135deg, #6e8efb, #a7a6cb, #ef9a9a, #fce4ec);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
+        :root {
+            --primary-bg: #f0f2f5;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --text-main: #2d3436;
         }
 
-        @keyframes gradientBG {
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
-        .hero p { font-size: 1.5rem; opacity: 0.9; }
-
-        /* Navigation Style from Image */
-        nav { position: absolute; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: bold; font-size: 1.2rem; }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
-
-        /* Resume Content Grid */
-        .container { max-width: 900px; margin: -100px auto 50px; padding: 0 20px; }
-        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+        /* Hero Header */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { margin-bottom: 15px; color: #4a69bd; border-bottom: 2px solid #f0f0f0; padding-bottom: 5px; }
-        .card ul { list-style: none; }
-        .card ul li { margin-bottom: 10px; font-size: 0.9rem; }
 
-        /* Full Width Resume Card */
-        .resume-full { grid-column: span 2; margin-top: 20px; }
+        header h1 { font-size: 4rem; font-weight: 800; letter-spacing: -1px; }
+        header p { font-size: 1.5rem; font-weight: 300; margin-top: 10px; }
 
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: -80px auto 50px;
+            padding: 20px;
+        }
+
+        /* Responsive Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Glass Card Style */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+        .card h3 { margin-bottom: 15px; color: #1e3799; font-size: 1.4rem; }
+        
         /* Contact Form */
-        .contact-section { background: white; border-radius: 12px; padding: 40px; margin-top: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .contact-section h2 { margin-bottom: 20px; }
-        .form-group { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; outline: none; }
-        textarea { grid-column: span 2; height: 100px; }
-        .btn-submit { background: #4a69bd; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; float: right; }
+        .contact-form {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
 
-        /* Social Icons */
-        .social-links { margin-top: 20px; display: flex; gap: 15px; font-size: 1.2rem; color: #666; }
+        .form-row { display: flex; gap: 15px; margin-bottom: 15px; }
+        input, textarea {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255,255,255,0.9);
+            outline: none;
+        }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .card-grid, .form-group { grid-template-columns: 1fr; }
-            .resume-full { grid-column: span 1; }
-            .hero h1 { font-size: 2.5rem; }
+        .submit-btn {
+            background: #1e3799;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+        }
+
+        /* Icons */
+        .social-bar {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 1.5rem;
+        }
+        .social-bar a { color: #1e3799; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            .form-row { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <nav>
-            <div class="logo">Suryansh.</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>Suryansh Tanwar</h1>
-        <p>Mechanical Engineer & Trainee Design Engineer</p>
-    </section>
+<header>
+    <h1>Suryansh Tanwar</h1>
+    <p>Mechanical Engineer & Design Enthusiast</p>
+</header>
 
-    <div class="container">
-        <div class="card-grid">
-            <div class="card" id="about">
-                <h3>About Me</h3>
-                <p>Mechanical Engineering graduate from SIET Nilokheri[cite: 4]. Currently working as a Trainee Design Engineer at ETA Engineering Pvt. Ltd., specializing in HVAC load calculations and technical documentation[cite: 7, 11, 12].</p>
-            </div>
-
-            <div class="card" id="skills">
-                <h3>Technical Skills</h3>
-                <ul>
-                    <li>AutoCAD & Siemens NX/Unigraphics [cite: 29, 30]</li>
-                    <li>Vehicle Service & Maintenance [cite: 31]</li>
-                    <li>Technical Communication [cite: 32]</li>
-                    <li>Microsoft Office Suite [cite: 33]</li>
-                </ul>
-            </div>
-
-            <div class="card" id="projects">
-                <h3>Key Projects</h3>
-                <ul>
-                    <li><strong>4X4 Car Mechanism:</strong> Integrated differentials for optimal power distribution[cite: 22, 23].</li>
-                    <li><strong>Eco Friendly PCM Van:</strong> Refrigeration using phase change materials[cite: 24, 25].</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Work & Internships</h3>
-                <ul>
-                    <li><strong>ETA Engineering:</strong> Trainee Design Engineer[cite: 7].</li>
-                    <li><strong>Maruti Suzuki:</strong> Automobile Service Intern[cite: 15].</li>
-                    <li><strong>DMRC:</strong> Train Maintenance Intern[cite: 19].</li>
-                </ul>
-            </div>
-
-            <div class="card resume-full">
-                <h3>Certifications</h3>
-                <p>AutoCAD Grade A [cite: 35] | Siemens NX Certification [cite: 41] | Automotive Vehicle Servicing (Maruti authorized) [cite: 37, 38] | DMRC Train Maintenance training[cite: 39, 40].</p>
-            </div>
+<div class="container">
+    <div class="grid">
+        <div class="card">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <p><strong>B.Tech in Mechanical Engineering</strong></p>
+            <p>State Institute of Engineering & Technology, Nilokheri (2021-2025)</p>
         </div>
 
-        <div class="contact-section" id="contact">
-            <h2>Have a Question?</h2>
-            <form action="#">
-                <div class="form-group">
-                    <input type="text" placeholder="Name" required>
+        <div class="card">
+            <h3><i class="fas fa-briefcase"></i> Experience</h3>
+            <p><strong>Trainee Design Engineer</strong> at ETA Engineering Pvt. Ltd.</p>
+            <p>Focusing on HVAC load calculations and technical documentation.</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fas fa-tools"></i> Skills</h3>
+            <p>AutoCAD, Siemens NX, Vehicle Maintenance, and Microsoft Office Suite.</p>
+        </div>
+
+        <div class="card">
+            <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+            <p>4X4 Car Mechanism & Eco-Friendly PCM Van.</p>
+        </div>
+
+        <div class="card contact-form">
+            <h3>Get In Touch</h3>
+            <form id="contact-me">
+                <div class="form-row">
+                    <input type="text" placeholder="Your Name" required>
                     <input type="text" placeholder="Subject">
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Message"></textarea>
                 </div>
-                <div style="overflow: auto;">
-                    <div class="social-links">
-                        <i class="fab fa-github"></i>
-                        <i class="fab fa-linkedin"></i>
-                        <i class="fab fa-twitter"></i>
+                <div class="form-row">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <textarea rows="4" placeholder="Your Message"></textarea>
+                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+                    <div class="social-bar">
+                        <a href="mailto:suryansh733733@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
                     </div>
-                    <button type="submit" class="btn-submit">Send Message</button>
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </div>
             </form>
-            <div style="margin-top: 20px; font-size: 0.8rem; color: #888;">
-                <p>Email: suryansh733733@gmail.com [cite: 3]</p>
-                <p>Phone: +91 9817814599 [cite: 3]</p>
-            </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>
