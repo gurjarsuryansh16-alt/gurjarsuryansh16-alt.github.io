@@ -8,16 +8,14 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            /* Dark Space Gradient */
-            background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0b0e14; /* Deep space dark background */
             color: white;
-            text-align: center;
             overflow-x: hidden;
-            min-height: 100vh;
+            scroll-behavior: smooth;
         }
 
-        /* --- 1. Background Animations (Stars & Planets) --- */
+        /* --- 1. Space Animations --- */
         .star {
             position: absolute;
             background: white;
@@ -26,131 +24,145 @@
             animation: twinkle var(--duration) infinite ease-in-out;
         }
 
-        .planet {
+        .planet-glow {
             position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(1px);
-            animation: float 8s ease-in-out infinite;
+            filter: blur(50px);
+            animation: float 10s infinite ease-in-out;
         }
-
-        .p1 { width: 120px; height: 120px; background: #ffafbd; top: 15%; left: 10%; opacity: 0.7; }
-        .p2 { width: 80px; height: 80px; background: #c9ffbf; bottom: 20%; right: 15%; animation-delay: 2s; opacity: 0.6; }
-        .p3 { width: 50px; height: 50px; background: #e0c3fc; top: 60%; left: 20%; animation-delay: 4s; opacity: 0.5; }
 
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
+            50% { opacity: 0.8; transform: scale(1.2); }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(10deg); }
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -40px); }
         }
 
-        /* --- 2. Header & Content Styling --- */
+        /* --- 2. Header Section --- */
         header {
-            padding: 100px 20px;
-            position: relative;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at top, #1e293b 0%, #0b0e14 100%);
         }
 
         h1 {
-            font-size: 50px;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #ffafbd, #e0c3fc);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: 0;
+            background: linear-gradient(90deg, #38bdf8, #e0c3fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        h2 { color: #38bdf8; font-weight: 300; }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #38bdf8;
-            color: #090a0f;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s;
+        h2 {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            font-weight: 300;
+            margin-top: 10px;
         }
 
-        .btn:hover { transform: scale(1.1); box-shadow: 0 0 20px #38bdf8; }
+        .btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #38bdf8;
+            color: #0b0e14;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
 
-        /* --- 3. Glassmorphism Sections --- */
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 8px 25px #38bdf8; }
+
+        /* --- 3. Content Sections --- */
         section {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 900px;
+            margin: 40px auto;
             padding: 40px;
-            background: rgba(255, 255, 255, 0.05); /* Transparent glass effect */
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
+            border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .skills-container {
+        h3 { color: #38bdf8; border-bottom: 2px solid #38bdf8; display: inline-block; margin-bottom: 20px; }
+
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
+            gap: 12px;
             justify-content: center;
-            gap: 15px;
         }
 
-        .skill-tag {
-            background: rgba(56, 189, 248, 0.2);
+        .skill-card {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid #38bdf8;
-            font-size: 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            transition: 0.3s;
         }
+
+        .skill-card:hover { background: #38bdf8; color: #0b0e14; transform: scale(1.05); }
+
     </style>
 </head>
 <body>
 
-    <div class="planet p1"></div>
-    <div class="planet p2"></div>
-    <div class="planet p3"></div>
+    <div class="planet-glow" style="top: 10%; left: 5%;"></div>
+    <div class="planet-glow" style="bottom: 10%; right: 5%; background: radial-gradient(circle, rgba(224, 195, 252, 0.15) 0%, transparent 70%);"></div>
 
     <header>
         <h1>Suryansh Tanwar</h1>
         <h2>Mechanical Engineer | HVAC Design</h2>
-        <a href="#" class="btn">View My Work</a>
+        <a href="#about" class="btn">Explore My Portfolio</a>
     </header>
 
-    <section>
-        <h2 style="color: #ffafbd;">About Me</h2>
-        <p>Mechanical Engineering graduate passionate about HVAC duct design, airflow balancing, and energy-efficient systems.</p>
+    <section id="about">
+        <h3>About Me</h3>
+        <p style="line-height: 1.6; color: #cbd5e1;">Mechanical Engineering graduate passionate about HVAC duct design, airflow balancing, and energy-efficient systems. I enjoy bringing technical precision to life through clean designs.</p>
     </section>
 
     <section>
-        <h2 style="color: #c9ffbf;">Skills</h2>
-        <div class="skills-container">
-            <div class="skill-tag">AutoCAD</div>
-            <div class="skill-tag">HVAC Design</div>
-            <div class="skill-tag">Duct Sizing</div>
-            <div class="skill-tag">Static Pressure</div>
-            <div class="skill-tag">Fan Selection</div>
-            <div class="skill-tag">Excel</div>
+        <h3>Core Skills</h3>
+        <div class="skills-grid">
+            <div class="skill-card">AutoCAD</div>
+            <div class="skill-card">HVAC Design</div>
+            <div class="skill-card">Duct Sizing</div>
+            <div class="skill-card">Static Pressure</div>
+            <div class="skill-card">Fan Selection</div>
+            <div class="skill-card">Excel</div>
         </div>
     </section>
 
     <script>
+        // Star Generator
         function createStars() {
-            const count = 150;
-            for (let i = 0; i < count; i++) {
+            const container = document.body;
+            for (let i = 0; i < 120; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                const size = Math.random() * 3 + 'px';
+                const size = Math.random() * 2.5 + 'px';
                 star.style.width = size;
                 star.style.height = size;
-                star.style.top = Math.random() * 100 + 'vh';
+                star.style.top = Math.random() * 200 + 'vh'; // Spread over long page
                 star.style.left = Math.random() * 100 + 'vw';
                 star.style.setProperty('--duration', Math.random() * 3 + 2 + 's');
-                document.body.appendChild(star);
+                container.appendChild(star);
             }
         }
         createStars();
     </script>
-
 </body>
 </html>
